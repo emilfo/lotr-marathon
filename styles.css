@@ -224,6 +224,9 @@ p {
   margin-top: 1rem;
   color: var(--logo-light);
   font-weight: 700;
+  font-size: clamp(1.4rem, 4vw, 2.4rem);
+  letter-spacing: 0.04em;
+  line-height: 1.2;
 }
 
 .timeline-grid,

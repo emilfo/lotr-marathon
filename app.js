@@ -156,11 +156,15 @@ if (countdownNode) {
     const days = Math.floor(delta / 86400000);
     const hours = Math.floor((delta % 86400000) / 3600000);
     const mins = Math.floor((delta % 3600000) / 60000);
-    countdownNode.textContent = `Countdown to Friday 11:00: ${days}d ${hours}h ${mins}m`;
+    const secs = Math.floor((delta % 60000) / 1000);
+    const hh = String(hours).padStart(2, "0");
+    const mm = String(mins).padStart(2, "0");
+    const ss = String(secs).padStart(2, "0");
+    countdownNode.textContent = `Countdown to Friday 11:00: ${days}d ${hh}:${mm}:${ss}`;
   };
 
   tick();
-  setInterval(tick, 1000 * 20);
+  setInterval(tick, 1000);
 }
 
 if (ringButton && ringMessage) {
