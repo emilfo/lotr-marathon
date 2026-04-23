@@ -428,43 +428,26 @@ p {
 }
 
 .ring {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 239, 190, 0.33);
-  background:
-    radial-gradient(circle at 30% 24%, #fff7dd 0%, #f1cf84 18%, #cf922f 45%, #8b5918 72%, #57320d 100%);
-  box-shadow:
-    inset 0 2px 6px rgba(255, 248, 214, 0.65),
-    inset 0 -10px 20px rgba(57, 35, 11, 0.68),
-    0 8px 20px rgba(0, 0, 0, 0.45);
+  width: 96px;
+  height: 64px;
+  border: none;
+  background: transparent;
   position: relative;
   cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
 }
 
-.ring::before {
-  content: "";
-  position: absolute;
-  inset: 22px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(8, 17, 29, 0.98) 62%, rgba(8, 17, 29, 0.82) 100%);
-  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.65);
-}
-
-.ring::after {
-  content: "";
-  position: absolute;
-  inset: 6px;
-  border-radius: 50%;
-  border: 1px dashed rgba(255, 217, 136, 0.4);
+.ring-svg {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: invert(54%) sepia(42%) saturate(554%) hue-rotate(5deg) brightness(74%) contrast(95%) drop-shadow(0 4px 12px rgba(0, 0, 0, 0.45));
 }
 
 .ring:hover {
-  box-shadow:
-    inset 0 1px 3px rgba(255, 255, 255, 0.45),
-    inset 0 -6px 14px rgba(57, 35, 11, 0.6),
-    0 0 0 3px rgba(227, 183, 55, 0.23),
-    0 8px 26px rgba(0, 0, 0, 0.45);
+  transform: translateY(-2px);
 }
 
 .ring.awake {
@@ -626,6 +609,79 @@ body.eye-of-sauron .float-emoji {
   width: 140px;
 }
 
+.secret-main {
+  width: min(1200px, 95vw);
+}
+
+.secret-hero {
+  text-align: center;
+}
+
+.secret-stage {
+  position: relative;
+  height: 480px;
+  margin-top: 1.2rem;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.durin-core {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-family: "Ringbearer", serif;
+  letter-spacing: 0.14em;
+  color: var(--logo-light);
+  border: 1px solid rgba(227, 183, 55, 0.6);
+  background: radial-gradient(circle at 40% 30%, rgba(255, 212, 124, 0.2), rgba(20, 26, 35, 0.8) 68%);
+  box-shadow: 0 0 32px rgba(227, 183, 55, 0.22), inset 0 0 22px rgba(0, 0, 0, 0.45);
+}
+
+.spin-orbit {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 640px;
+  height: 640px;
+  transform: translate(-50%, -50%);
+  animation: orbit-spin 26s linear infinite;
+}
+
+.spin-orbit img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 190px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: 1px solid rgba(227, 183, 55, 0.5);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.42);
+  transform: rotate(calc(var(--i) * 60deg)) translateX(255px) rotate(calc(var(--i) * -60deg));
+  animation: orbit-spin-reverse 26s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes orbit-spin-reverse {
+  from {
+    transform: rotate(calc(var(--i) * 60deg)) translateX(255px) rotate(calc(var(--i) * -60deg)) rotate(0deg);
+  }
+  to {
+    transform: rotate(calc(var(--i) * 60deg)) translateX(255px) rotate(calc(var(--i) * -60deg)) rotate(-360deg);
+  }
+}
+
 @media (max-width: 700px) {
   .site-header {
     position: static;
@@ -659,5 +715,29 @@ body.eye-of-sauron .float-emoji {
 
   .audio-dock input[type="range"] {
     width: 110px;
+  }
+
+  .secret-stage {
+    height: 360px;
+  }
+
+  .spin-orbit {
+    width: 420px;
+    height: 420px;
+  }
+
+  .spin-orbit img {
+    width: 124px;
+    height: 84px;
+    transform: rotate(calc(var(--i) * 60deg)) translateX(165px) rotate(calc(var(--i) * -60deg));
+  }
+
+  @keyframes orbit-spin-reverse {
+    from {
+      transform: rotate(calc(var(--i) * 60deg)) translateX(165px) rotate(calc(var(--i) * -60deg)) rotate(0deg);
+    }
+    to {
+      transform: rotate(calc(var(--i) * 60deg)) translateX(165px) rotate(calc(var(--i) * -60deg)) rotate(-360deg);
+    }
   }
 }
