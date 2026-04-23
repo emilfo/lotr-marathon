@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Movies | Middle-earth Marathon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=IM+Fell+English+SC&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="movies">
+  <div class="bg-glow"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">Middle-earth Marathon</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="movies.html" aria-current="page">Movies</a>
+      <a href="music.html">Music</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero small">
+      <p class="tag">Movie Scroll</p>
+      <h1>The six-film quest</h1>
+      <p class="lead">Click each movie title in order to unlock a hidden fellowship badge.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Friday - The Hobbit Trilogy</h2>
+      <div class="cards">
+        <article class="card">
+          <h3><button class="secret-title" data-order="1">The Hobbit: An Unexpected Journey</button></h3>
+          <p>Runtime: 169 min</p>
+          <a href="https://www.youtube.com/watch?v=SDnYMbYB-nU" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+        <article class="card">
+          <h3><button class="secret-title" data-order="2">The Hobbit: The Desolation of Smaug</button></h3>
+          <p>Runtime: 161 min</p>
+          <a href="https://www.youtube.com/watch?v=OPVWy1tFXuc" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+        <article class="card">
+          <h3><button class="secret-title" data-order="3">The Hobbit: The Battle of the Five Armies</button></h3>
+          <p>Runtime: 144 min</p>
+          <a href="https://www.youtube.com/watch?v=iVAgTiBrrDA" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Saturday + Sunday - The Lord of the Rings Trilogy</h2>
+      <div class="cards">
+        <article class="card">
+          <h3><button class="secret-title" data-order="4">The Lord of the Rings: The Fellowship of the Ring</button></h3>
+          <p>Runtime: 178 min</p>
+          <a href="https://www.youtube.com/watch?v=V75dMMIW2B4" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+        <article class="card">
+          <h3><button class="secret-title" data-order="5">The Lord of the Rings: The Two Towers</button></h3>
+          <p>Runtime: 179 min</p>
+          <a href="https://www.youtube.com/watch?v=LbfMDwc4azU" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+        <article class="card">
+          <h3><button class="secret-title" data-order="6">The Lord of the Rings: The Return of the King</button></h3>
+          <p>Runtime: 201 min</p>
+          <a href="https://www.youtube.com/watch?v=r5X-hFf6Bwo" target="_blank" rel="noreferrer">Official Trailer</a>
+        </article>
+      </div>
+      <p id="fellowship-badge" class="hidden-badge">Unlocked: There and Back Again badge</p>
+    </section>
+
+    <section class="panel split">
+      <div>
+        <h2>Hidden Route</h2>
+        <p>Some doors open only if you know the word of welcome.</p>
+      </div>
+      <a class="button ghost" href="music.html">To the music halls</a>
+    </section>
+  </main>
+
+  <footer>
+    <button id="ring-button" class="ring" aria-label="The One Ring">The One Ring</button>
+    <p id="ring-message">Find all movie-order clicks. Then type the Elvish password.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

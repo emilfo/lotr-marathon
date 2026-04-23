@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music & Hype | Middle-earth Marathon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;800&family=IM+Fell+English+SC&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-page="music">
+  <div class="bg-glow"></div>
+  <header class="site-header">
+    <a class="brand" href="index.html">Middle-earth Marathon</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="itinerary.html">Itinerary</a>
+      <a href="movies.html">Movies</a>
+      <a href="music.html" aria-current="page">Music</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero small">
+      <p class="tag">Hype Engine</p>
+      <h1>Soundtrack power-up</h1>
+      <p class="lead">Movie music links, quote generator, and hidden mode triggers.</p>
+    </section>
+
+    <section class="panel">
+      <h2>Play official soundtrack pages</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>The Hobbit Soundtracks</h3>
+          <a href="https://open.spotify.com/search/the%20hobbit%20howard%20shore" target="_blank" rel="noreferrer">Open on Spotify</a>
+        </article>
+        <article class="card">
+          <h3>The Lord of the Rings Soundtracks</h3>
+          <a href="https://open.spotify.com/search/lord%20of%20the%20rings%20howard%20shore" target="_blank" rel="noreferrer">Open on Spotify</a>
+        </article>
+        <article class="card">
+          <h3>Official LOTR playlist search</h3>
+          <a href="https://www.youtube.com/results?search_query=lord+of+the+rings+official+soundtrack" target="_blank" rel="noreferrer">Open on YouTube</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel split">
+      <div>
+        <h2>Quote forge</h2>
+        <p>Click for legendary lines while people arrive and claim their seats.</p>
+      </div>
+      <button id="quote-btn" class="button">Summon a Quote</button>
+    </section>
+    <section class="panel">
+      <p id="quote-output" class="quote">"Even the smallest person can change the course of the future."</p>
+    </section>
+  </main>
+
+  <footer>
+    <button id="ring-button" class="ring" aria-label="The One Ring">The One Ring</button>
+    <p id="ring-message">Try Konami code. Try typing "mellon". You know, just saying.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>

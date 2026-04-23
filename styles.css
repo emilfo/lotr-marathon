@@ -1,0 +1,271 @@
+:root {
+  --bg-night: #08111d;
+  --bg-deep: #0f1c2d;
+  --gold: #d4b26a;
+  --gold-bright: #f1deaa;
+  --stone: #b6bdc7;
+  --ink: #e7edf6;
+  --accent: #3b8f7a;
+  --ring-red: #8b1f1f;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--ink);
+  background: radial-gradient(circle at 20% 20%, #1b2c42 0%, var(--bg-night) 55%, #060b14 100%);
+  min-height: 100%;
+}
+
+.bg-glow {
+  position: fixed;
+  inset: -15vh -20vw;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 15% 20%, rgba(212, 178, 106, 0.2), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(59, 143, 122, 0.18), transparent 35%),
+    radial-gradient(circle at 50% 85%, rgba(139, 31, 31, 0.18), transparent 35%);
+}
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem clamp(1rem, 3vw, 3rem);
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(6px);
+  background: rgba(8, 17, 29, 0.7);
+  border-bottom: 1px solid rgba(212, 178, 106, 0.25);
+}
+
+.brand {
+  text-decoration: none;
+  color: var(--gold-bright);
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: var(--stone);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+nav a[aria-current="page"] {
+  color: var(--gold-bright);
+}
+
+main {
+  width: min(1050px, 92vw);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1.2rem;
+}
+
+.hero,
+.panel {
+  border: 1px solid rgba(212, 178, 106, 0.3);
+  border-radius: 18px;
+  padding: clamp(1rem, 3.5vw, 2rem);
+  background: linear-gradient(160deg, rgba(13, 25, 40, 0.95), rgba(8, 17, 29, 0.85));
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero.small {
+  padding: 1.3rem clamp(1rem, 3vw, 2rem);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0 0 0.5rem;
+  font-family: Cinzel, serif;
+  letter-spacing: 0.03em;
+}
+
+p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+.tag {
+  color: var(--gold);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
+.lead {
+  margin: 0.8rem 0 0;
+  max-width: 66ch;
+}
+
+.cta-row {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.button {
+  border: 1px solid rgba(212, 178, 106, 0.6);
+  background: linear-gradient(180deg, #d2b46f, #9f8246);
+  color: #21180c;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  text-decoration: none;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.button.ghost {
+  background: transparent;
+  color: var(--gold-bright);
+}
+
+.countdown {
+  margin-top: 1rem;
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.timeline-grid,
+.cards {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card,
+.timeline-grid article {
+  border: 1px solid rgba(182, 189, 199, 0.25);
+  border-radius: 14px;
+  padding: 0.9rem;
+  background: rgba(21, 32, 48, 0.65);
+}
+
+.card a {
+  color: #9de4d2;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.split {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.agenda {
+  margin-top: 0.8rem;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.agenda-item {
+  display: flex;
+  gap: 1rem;
+  align-items: baseline;
+  border-left: 3px solid var(--accent);
+  padding: 0.5rem 0.8rem;
+  background: rgba(20, 33, 50, 0.7);
+  border-radius: 8px;
+}
+
+.agenda-item span {
+  min-width: 4.4rem;
+  color: var(--gold-bright);
+  font-weight: 700;
+}
+
+.ring {
+  border-radius: 999px;
+  border: 1px solid var(--gold);
+  background: radial-gradient(circle, #f6e3b8 0%, #ba934b 45%, #836025 100%);
+  color: #1f1408;
+  font-family: Cinzel, serif;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+}
+
+footer {
+  width: min(1050px, 92vw);
+  margin: 0 auto 2.5rem;
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+#ring-message {
+  color: var(--stone);
+}
+
+.quote {
+  font-family: "IM Fell English SC", serif;
+  font-size: 1.3rem;
+  color: var(--gold-bright);
+}
+
+.hidden-badge {
+  margin-top: 1rem;
+  display: none;
+  color: #9de4d2;
+  font-weight: 700;
+}
+
+.hidden-badge.show {
+  display: block;
+}
+
+.secret-title {
+  all: unset;
+  cursor: pointer;
+  color: var(--ink);
+  font-family: Cinzel, serif;
+  font-size: 1.05rem;
+}
+
+body.eye-of-sauron {
+  filter: saturate(1.2) contrast(1.05);
+}
+
+body.eye-of-sauron .bg-glow {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(206, 62, 35, 0.45), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(125, 14, 14, 0.35), transparent 60%);
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    position: static;
+  }
+
+  nav {
+    gap: 0.7rem;
+  }
+
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
