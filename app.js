@@ -43,6 +43,10 @@ for (let i = 0; i < 12; i += 1) {
 
 document.body.append(emojiField);
 
+const ringButton = document.getElementById("ring-button");
+const ringMessage = document.getElementById("ring-message");
+let ringClicks = 0;
+
 const anthem = new Audio("Theyre_Taking_The_Hobbits_To_Isengard.mp3");
 anthem.loop = true;
 anthem.preload = "auto";
@@ -62,6 +66,7 @@ if (Number.isFinite(savedTime) && savedTime > 0) {
 const audioDock = document.createElement("aside");
 audioDock.className = "audio-dock";
 audioDock.innerHTML = "<strong>Isengard Anthem</strong><button id=\"audio-toggle\" type=\"button\">Play</button><input id=\"audio-volume\" type=\"range\" min=\"0\" max=\"1\" step=\"0.05\" value=\"0.4\" aria-label=\"Music volume\">";
+audioDock.classList.add("is-hidden");
 const anthemSlot = document.getElementById("anthem-slot");
 if (anthemSlot) {
   anthemSlot.append(audioDock);
@@ -72,6 +77,22 @@ const audioVolume = document.getElementById("audio-volume");
 
 if (audioToggle && audioVolume) {
   audioVolume.value = String(anthem.volume);
+
+  const showAudioDock = () => {
+    audioDock.classList.remove("is-hidden");
+  };
+
+  const startAnthem = async () => {
+    try {
+      await anthem.play();
+      anthem.muted = false;
+      audioToggle.textContent = "Pause";
+      showAudioDock();
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 
   const syncState = () => {
     localStorage.setItem(MUSIC_VOLUME_KEY, String(anthem.volume));
@@ -88,12 +109,9 @@ if (audioToggle && audioVolume) {
     }
 
     if (anthem.paused) {
-      try {
-        await anthem.play();
-        anthem.muted = false;
-        audioToggle.textContent = "Pause";
+      if (await startAnthem()) {
         syncState();
-      } catch (error) {
+      } else {
         audioToggle.textContent = "Tap again";
       }
     } else {
@@ -116,25 +134,13 @@ if (audioToggle && audioVolume) {
     }
   });
 
-  const shouldAutoPlay = localStorage.getItem(MUSIC_PLAYING_KEY);
-  const tryAutoplay = async () => {
-    if (shouldAutoPlay !== "0") {
-      try {
-        await anthem.play();
-        audioToggle.textContent = "Pause";
-      } catch (error) {
-        anthem.muted = true;
-        try {
-          await anthem.play();
-          audioToggle.textContent = "Unmute";
-        } catch (secondError) {
-          audioToggle.textContent = "Tap to start";
-        }
+  ringButton?.addEventListener("click", async () => {
+    if (ringClicks === 9 && anthem.paused) {
+      if (await startAnthem()) {
+        syncState();
       }
     }
-  };
-
-  tryAutoplay();
+  });
 }
 
 if (countdownNode) {
@@ -157,10 +163,6 @@ if (countdownNode) {
   setInterval(tick, 1000 * 20);
 }
 
-const ringButton = document.getElementById("ring-button");
-const ringMessage = document.getElementById("ring-message");
-let ringClicks = 0;
-
 if (ringButton && ringMessage) {
   ringButton.addEventListener("click", () => {
     ringButton.classList.remove("awake");
@@ -178,7 +180,7 @@ if (ringButton && ringMessage) {
         audioToggle.click();
       }
     } else if (ringClicks >= 10) {
-      ringMessage.textContent = "One for the Dark Lord on his dark throne. Type friend to proceed.";
+      ringMessage.textContent = "One for the Dark Lord on his dark throne. Type mellon to proceed.";
     }
   });
 }

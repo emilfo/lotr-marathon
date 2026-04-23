@@ -554,6 +554,10 @@ body.eye-of-sauron .float-emoji {
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
 }
 
+.audio-dock.is-hidden {
+  display: none;
+}
+
 .audio-dock strong {
   grid-column: 1 / -1;
   font-family: "Ringbearer", serif;
