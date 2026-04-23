@@ -701,7 +701,7 @@ body.eye-of-sauron .float-emoji {
   margin-top: 1.2rem;
   display: grid;
   place-items: center;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .durin-core {
