@@ -175,7 +175,7 @@ if (ringButton && ringMessage) {
         audioToggle.click();
       }
     } else if (ringClicks >= 10) {
-      ringMessage.textContent = "One for the Dark Lord on his dark throne. Type mellon to proceed.";
+      ringMessage.textContent = "One for the Dark Lord on his dark throne. Type friend to proceed.";
     }
   });
 }
@@ -203,7 +203,7 @@ document.addEventListener("keydown", (event) => {
     typed = typed.slice(-12);
   }
 
-  if (typed.includes("mellon")) {
+  if (typed.includes("friend") || typed.includes("mellon")) {
     window.location.href = "doors-of-durin.html";
   }
 });

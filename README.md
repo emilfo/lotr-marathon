@@ -8,13 +8,13 @@ Static multi-page GitHub Pages site for a 1-3 May LOTR + Hobbit marathon.
 - `itinerary.html` - detailed schedule with correct movie names
 - `movies.html` - all six movies with trailer links and movie-order easter egg
 - `music.html` - soundtrack links + quote generator
-- `doors-of-durin.html` - hidden easter egg page unlocked by typing `mellon`
+- `doors-of-durin.html` - hidden easter egg page unlocked by typing `friend`
 
 ## Easter eggs
 
 - Click the ring button 9+ times
 - Enter Konami code
-- Type `mellon`
+- Type `friend`
 - Click all movie titles in exact order on `movies.html`
 
 ## Run locally

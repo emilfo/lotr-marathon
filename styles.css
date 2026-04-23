@@ -46,34 +46,6 @@ body {
   transition: background 700ms ease, filter 700ms ease;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -4;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  opacity: 0.15;
-  filter: saturate(1.15) contrast(1.05);
-}
-
-body[data-page="home"]::before {
-  background-image: url("assets/images/fotr0853.jpg");
-}
-
-body[data-page="itinerary"]::before {
-  background-image: url("assets/images/htrlr127.jpg");
-}
-
-body[data-page="movies"]::before {
-  background-image: url("assets/images/htrlr317.jpg");
-}
-
-body[data-page="music"]::before {
-  background-image: url("assets/images/ttt0059.jpg");
-}
-
 .bg-glow {
   position: fixed;
   inset: -15vh -20vw;
