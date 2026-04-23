@@ -30,3 +30,13 @@ Open `index.html` in your browser.
 ## Media note
 
 This site links to official trailer/soundtrack pages rather than bundling copyrighted movie assets directly.
+
+## Added local assets
+
+- `Theyre_Taking_The_Hobbits_To_Isengard.mp3` used by the in-page music dock
+- `assets/images/*` downloaded from Framecap Library pages provided by user
+- `assets/fonts/RingbearerMedium-51mgZ.ttf` and `assets/fonts/PartyBusiness-4B0K.ttf` from linked Tolkien-inspired font resources
+
+## Licensing reminder
+
+Font packages in this project are typically listed as non-commercial/freeware on their source pages. Keep usage personal unless you secure commercial rights.

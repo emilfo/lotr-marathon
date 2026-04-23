@@ -1,12 +1,34 @@
 :root {
-  --bg-night: #08111d;
-  --bg-deep: #0f1c2d;
-  --gold: #d4b26a;
-  --gold-bright: #f1deaa;
-  --stone: #b6bdc7;
-  --ink: #e7edf6;
-  --accent: #3b8f7a;
-  --ring-red: #8b1f1f;
+  --black: #000000;
+  --moss-1: #2b2f22;
+  --moss-2: #3c422f;
+  --moss-3: #4a4d35;
+  --moss-4: #5e614d;
+  --rotk-1: #213150;
+  --rotk-2: #252d41;
+  --rotk-3: #2f486c;
+  --rotk-4: #46668f;
+  --tower-1: #502730;
+  --tower-2: #532b35;
+  --tower-3: #602932;
+  --tower-4: #8c4949;
+  --logo-copper: #b87316;
+  --logo-gold: #e3b737;
+  --logo-light: #eedda0;
+  --logo-ivory: #f5eece;
+  --ink: #fefefe;
+}
+
+@font-face {
+  font-family: "Ringbearer";
+  src: url("assets/fonts/RingbearerMedium-51mgZ.ttf") format("truetype");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Party Business";
+  src: url("assets/fonts/PartyBusiness-4B0K.ttf") format("truetype");
+  font-display: swap;
 }
 
 * {
@@ -17,9 +39,9 @@ html,
 body {
   margin: 0;
   padding: 0;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: Georgia, "Times New Roman", serif;
   color: var(--ink);
-  background: radial-gradient(circle at 20% 20%, #1b2c42 0%, var(--bg-night) 55%, #060b14 100%);
+  background: radial-gradient(circle at 20% 20%, var(--rotk-4) 0%, var(--rotk-2) 30%, var(--moss-1) 58%, var(--black) 100%);
   min-height: 100%;
 }
 
@@ -29,9 +51,9 @@ body {
   pointer-events: none;
   z-index: -3;
   background:
-    radial-gradient(circle at 15% 20%, rgba(212, 178, 106, 0.2), transparent 40%),
-    radial-gradient(circle at 90% 10%, rgba(59, 143, 122, 0.18), transparent 35%),
-    radial-gradient(circle at 50% 85%, rgba(139, 31, 31, 0.18), transparent 35%);
+    radial-gradient(circle at 15% 20%, rgba(227, 183, 55, 0.26), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(70, 102, 143, 0.28), transparent 35%),
+    radial-gradient(circle at 50% 85%, rgba(140, 73, 73, 0.28), transparent 35%);
 }
 
 .floating-field {
@@ -48,6 +70,21 @@ body {
   opacity: 0.45;
   filter: blur(0.3px);
   animation: drift var(--speed) ease-in-out infinite;
+}
+
+.emoji-field {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.float-emoji {
+  position: absolute;
+  opacity: 0.58;
+  animation: drift var(--speed) ease-in-out infinite;
+  filter: drop-shadow(0 0 8px rgba(238, 221, 160, 0.3));
 }
 
 @keyframes drift {
@@ -69,14 +106,14 @@ body {
   position: sticky;
   top: 0;
   backdrop-filter: blur(6px);
-  background: rgba(8, 17, 29, 0.7);
-  border-bottom: 1px solid rgba(212, 178, 106, 0.25);
+  background: rgba(33, 49, 80, 0.68);
+  border-bottom: 1px solid rgba(227, 183, 55, 0.25);
 }
 
 .brand {
   text-decoration: none;
-  color: var(--gold-bright);
-  font-family: "IM Fell English SC", serif;
+  color: var(--logo-light);
+  font-family: "Ringbearer", serif;
   font-size: 1.3rem;
   letter-spacing: 0.05em;
 }
@@ -88,13 +125,13 @@ nav {
 }
 
 nav a {
-  color: var(--stone);
+  color: var(--logo-ivory);
   text-decoration: none;
   font-weight: 700;
 }
 
 nav a[aria-current="page"] {
-  color: var(--gold-bright);
+  color: var(--logo-gold);
 }
 
 main {
@@ -106,10 +143,10 @@ main {
 
 .hero,
 .panel {
-  border: 1px solid rgba(212, 178, 106, 0.3);
+  border: 1px solid rgba(227, 183, 55, 0.35);
   border-radius: 18px;
   padding: clamp(1rem, 3.5vw, 2rem);
-  background: linear-gradient(160deg, rgba(13, 25, 40, 0.95), rgba(8, 17, 29, 0.85));
+  background: linear-gradient(160deg, rgba(37, 45, 65, 0.95), rgba(43, 47, 34, 0.87));
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
@@ -121,7 +158,7 @@ h1,
 h2,
 h3 {
   margin: 0 0 0.5rem;
-  font-family: Cinzel, serif;
+  font-family: "Ringbearer", serif;
   letter-spacing: 0.03em;
 }
 
@@ -131,7 +168,7 @@ p {
 }
 
 .tag {
-  color: var(--gold);
+  color: var(--logo-gold);
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
@@ -151,8 +188,8 @@ p {
 }
 
 .button {
-  border: 1px solid rgba(212, 178, 106, 0.6);
-  background: linear-gradient(180deg, #d2b46f, #9f8246);
+  border: 1px solid rgba(184, 115, 22, 0.7);
+  background: linear-gradient(180deg, var(--logo-light), var(--logo-copper));
   color: #21180c;
   border-radius: 999px;
   padding: 0.65rem 1rem;
@@ -163,12 +200,12 @@ p {
 
 .button.ghost {
   background: transparent;
-  color: var(--gold-bright);
+  color: var(--logo-light);
 }
 
 .countdown {
   margin-top: 1rem;
-  color: var(--gold-bright);
+  color: var(--logo-light);
   font-weight: 700;
 }
 
@@ -194,7 +231,7 @@ p {
   object-fit: cover;
   border-radius: 12px;
   margin: 0.5rem 0 0.7rem;
-  border: 1px solid rgba(212, 178, 106, 0.3);
+  border: 1px solid rgba(227, 183, 55, 0.35);
 }
 
 .image-grid {
@@ -204,11 +241,15 @@ p {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
+.image-grid.dense {
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+}
+
 .image-grid a {
   display: block;
   border-radius: 14px;
   overflow: hidden;
-  border: 1px solid rgba(212, 178, 106, 0.25);
+  border: 1px solid rgba(227, 183, 55, 0.25);
   transform: translateY(0);
   transition: transform 180ms ease;
 }
@@ -249,7 +290,7 @@ p {
   display: flex;
   gap: 1rem;
   align-items: baseline;
-  border-left: 3px solid var(--accent);
+  border-left: 3px solid var(--logo-gold);
   padding: 0.5rem 0.8rem;
   background: rgba(20, 33, 50, 0.7);
   border-radius: 8px;
@@ -257,7 +298,7 @@ p {
 
 .agenda-item span {
   min-width: 4.4rem;
-  color: var(--gold-bright);
+  color: var(--logo-light);
   font-weight: 700;
 }
 
@@ -266,8 +307,7 @@ p {
   height: 74px;
   border-radius: 50%;
   border: none;
-  background:
-    radial-gradient(circle at 35% 30%, #f8ebc9 0%, #e5cb8c 20%, #c9a25f 38%, #9a7339 58%, #6f4c20 78%, #4f3414 100%);
+  background: conic-gradient(from 65deg, var(--logo-copper), var(--logo-gold), var(--logo-light), var(--logo-copper));
   box-shadow:
     inset 0 1px 3px rgba(255, 255, 255, 0.45),
     inset 0 -6px 14px rgba(57, 35, 11, 0.6),
@@ -286,17 +326,25 @@ p {
 }
 
 .ring::after {
-  content: "ash nazg";
+  content: "ash nazg durbatuluk";
   position: absolute;
   inset: 0;
   display: grid;
   place-items: center;
-  font-family: "IM Fell English SC", serif;
-  font-size: 0.62rem;
+  font-family: "Party Business", serif;
+  font-size: 0.58rem;
   letter-spacing: 0.06em;
   color: rgba(255, 216, 142, 0.88);
   text-shadow: 0 0 10px rgba(255, 167, 73, 0.45);
   mix-blend-mode: screen;
+}
+
+.ring:hover {
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -6px 14px rgba(57, 35, 11, 0.6),
+    0 0 0 3px rgba(227, 183, 55, 0.23),
+    0 8px 26px rgba(0, 0, 0, 0.45);
 }
 
 .ring.awake {
@@ -336,13 +384,13 @@ footer {
 }
 
 #ring-message {
-  color: var(--stone);
+  color: var(--logo-ivory);
 }
 
 .quote {
-  font-family: "IM Fell English SC", serif;
+  font-family: "Party Business", serif;
   font-size: 1.3rem;
-  color: var(--gold-bright);
+  color: var(--logo-light);
 }
 
 .hidden-badge {
@@ -360,7 +408,7 @@ footer {
   all: unset;
   cursor: pointer;
   color: var(--ink);
-  font-family: Cinzel, serif;
+  font-family: "Ringbearer", serif;
   font-size: 1.05rem;
 }
 
@@ -371,7 +419,45 @@ body.eye-of-sauron {
 body.eye-of-sauron .bg-glow {
   background:
     radial-gradient(circle at 50% 50%, rgba(206, 62, 35, 0.45), transparent 35%),
-    radial-gradient(circle at 50% 50%, rgba(125, 14, 14, 0.35), transparent 60%);
+    radial-gradient(circle at 50% 50%, rgba(96, 41, 50, 0.35), transparent 60%);
+}
+
+.audio-dock {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 12;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.7rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(227, 183, 55, 0.35);
+  background: rgba(37, 45, 65, 0.88);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+}
+
+.audio-dock strong {
+  grid-column: 1 / -1;
+  font-family: "Ringbearer", serif;
+  color: var(--logo-light);
+  font-size: 0.9rem;
+  letter-spacing: 0.03em;
+}
+
+.audio-dock button {
+  border: 1px solid rgba(184, 115, 22, 0.7);
+  background: linear-gradient(180deg, var(--logo-light), var(--logo-copper));
+  color: #21180c;
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.audio-dock input[type="range"] {
+  width: 140px;
 }
 
 @media (max-width: 700px) {
@@ -386,5 +472,15 @@ body.eye-of-sauron .bg-glow {
   footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .audio-dock {
+    right: 0.6rem;
+    bottom: 0.6rem;
+    padding: 0.55rem 0.7rem;
+  }
+
+  .audio-dock input[type="range"] {
+    width: 110px;
   }
 }

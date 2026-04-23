@@ -23,6 +23,58 @@ for (let i = 0; i < 15; i += 1) {
 
 document.body.append(floatingField);
 
+const emojiField = document.createElement("div");
+emojiField.className = "emoji-field";
+const emojiSet = ["💍", "🧙", "🧝", "⚔️", "🏹", "🔥", "🛡️", "🗡️", "🌋", "🦅"];
+
+for (let i = 0; i < 12; i += 1) {
+  const emoji = document.createElement("span");
+  emoji.className = "float-emoji";
+  emoji.textContent = emojiSet[Math.floor(Math.random() * emojiSet.length)];
+  emoji.style.left = `${Math.random() * 100}%`;
+  emoji.style.top = `${Math.random() * 100}%`;
+  emoji.style.fontSize = `${0.8 + Math.random() * 1}rem`;
+  emoji.style.setProperty("--speed", `${9 + Math.random() * 13}s`);
+  emoji.style.setProperty("--rise", `${10 + Math.random() * 35}px`);
+  emoji.style.setProperty("--slide", `${-24 + Math.random() * 48}px`);
+  emoji.style.animationDelay = `${Math.random() * 9}s`;
+  emojiField.append(emoji);
+}
+
+document.body.append(emojiField);
+
+const anthem = new Audio("Theyre_Taking_The_Hobbits_To_Isengard.mp3");
+anthem.loop = true;
+anthem.volume = 0.4;
+
+const audioDock = document.createElement("aside");
+audioDock.className = "audio-dock";
+audioDock.innerHTML = "<strong>Isengard Anthem</strong><button id=\"audio-toggle\" type=\"button\">Play</button><input id=\"audio-volume\" type=\"range\" min=\"0\" max=\"1\" step=\"0.05\" value=\"0.4\" aria-label=\"Music volume\">";
+document.body.append(audioDock);
+
+const audioToggle = document.getElementById("audio-toggle");
+const audioVolume = document.getElementById("audio-volume");
+
+if (audioToggle && audioVolume) {
+  audioToggle.addEventListener("click", async () => {
+    if (anthem.paused) {
+      try {
+        await anthem.play();
+        audioToggle.textContent = "Pause";
+      } catch (error) {
+        audioToggle.textContent = "Tap again";
+      }
+    } else {
+      anthem.pause();
+      audioToggle.textContent = "Play";
+    }
+  });
+
+  audioVolume.addEventListener("input", () => {
+    anthem.volume = Number(audioVolume.value);
+  });
+}
+
 if (countdownNode) {
   const tick = () => {
     const now = new Date();
@@ -60,6 +112,9 @@ if (ringButton && ringMessage) {
     } else if (ringClicks === 9) {
       ringMessage.textContent = "Nine for Mortal Men doomed to die... you unlocked an easter egg.";
       document.body.classList.add("eye-of-sauron");
+      if (anthem.paused && audioToggle) {
+        audioToggle.click();
+      }
     } else if (ringClicks >= 10) {
       ringMessage.textContent = "One for the Dark Lord on his dark throne. Type mellon to proceed.";
     }
