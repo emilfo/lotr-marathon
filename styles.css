@@ -221,12 +221,50 @@ p {
 }
 
 .countdown {
-  margin-top: 1rem;
-  color: var(--logo-light);
+  margin-top: 1.25rem;
+  color: var(--logo-ivory);
   font-weight: 700;
   font-size: clamp(1.4rem, 4vw, 2.4rem);
   letter-spacing: 0.04em;
   line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(227, 183, 55, 0.65);
+  background:
+    linear-gradient(160deg, rgba(15, 25, 41, 0.88), rgba(43, 47, 34, 0.6));
+  box-shadow:
+    0 10px 24px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 rgba(255, 238, 198, 0.18);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.6);
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+}
+
+.countdown-label {
+  font-size: clamp(0.8rem, 1.4vw, 1rem);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(245, 238, 206, 0.9);
+}
+
+.countdown-time {
+  font-size: clamp(1.45rem, 4.3vw, 2.55rem);
+  font-weight: 800;
+  color: var(--logo-light);
+  animation: countdown-pulse 1s ease-in-out infinite;
+}
+
+@keyframes countdown-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px rgba(255, 203, 107, 0.45);
+  }
+  50% {
+    text-shadow: 0 0 18px rgba(255, 203, 107, 0.9);
+  }
 }
 
 .timeline-grid,

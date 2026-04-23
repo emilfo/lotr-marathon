@@ -34,7 +34,7 @@ for (let i = 0; i < 12; i += 1) {
   emoji.style.left = `${Math.random() * 100}%`;
   emoji.style.top = `${Math.random() * 100}%`;
   emoji.style.fontSize = `${0.8 + Math.random() * 1}rem`;
-  emoji.style.setProperty("--speed", `${9 + Math.random() * 13}s`);
+  emoji.style.setProperty("--speed", `${5 + Math.random() * 8}s`);
   emoji.style.setProperty("--rise", `${10 + Math.random() * 35}px`);
   emoji.style.setProperty("--slide", `${-24 + Math.random() * 48}px`);
   emoji.style.animationDelay = `${Math.random() * 9}s`;
@@ -160,7 +160,7 @@ if (countdownNode) {
     const hh = String(hours).padStart(2, "0");
     const mm = String(mins).padStart(2, "0");
     const ss = String(secs).padStart(2, "0");
-    countdownNode.textContent = `Countdown to Friday 11:00: ${days}d ${hh}:${mm}:${ss}`;
+    countdownNode.innerHTML = `<span class="countdown-label">Countdown to Friday 11:00</span><span class="countdown-time">${days}d ${hh}:${mm}:${ss}</span>`;
   };
 
   tick();
