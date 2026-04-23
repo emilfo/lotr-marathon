@@ -45,6 +45,34 @@ body {
   min-height: 100%;
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -4;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0.15;
+  filter: saturate(1.15) contrast(1.05);
+}
+
+body[data-page="home"]::before {
+  background-image: url("assets/images/fotr0853.jpg");
+}
+
+body[data-page="itinerary"]::before {
+  background-image: url("assets/images/htrlr127.jpg");
+}
+
+body[data-page="movies"]::before {
+  background-image: url("assets/images/htrlr317.jpg");
+}
+
+body[data-page="music"]::before {
+  background-image: url("assets/images/ttt0059.jpg");
+}
+
 .bg-glow {
   position: fixed;
   inset: -15vh -20vw;
@@ -225,6 +253,73 @@ p {
   background: rgba(21, 32, 48, 0.65);
 }
 
+.cinematic {
+  align-items: stretch;
+}
+
+.scene-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 210px;
+  display: grid;
+  align-content: end;
+}
+
+.scene-card img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.scene-card h3,
+.scene-card p {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.8);
+}
+
+.movie-card {
+  background: linear-gradient(180deg, rgba(37, 45, 65, 0.9), rgba(43, 47, 34, 0.92));
+}
+
+.day-panel {
+  overflow: hidden;
+}
+
+.panel-banner {
+  width: calc(100% + 4rem);
+  margin: -2rem -2rem 1rem;
+  height: 170px;
+  object-fit: cover;
+  display: block;
+  border-bottom: 1px solid rgba(227, 183, 55, 0.35);
+}
+
+.scene-link {
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.card-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.45;
+}
+
+.scene-link h3,
+.scene-link a {
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 3px 14px rgba(0, 0, 0, 0.85);
+}
+
 .poster {
   width: 100%;
   aspect-ratio: 2 / 3;
@@ -303,15 +398,16 @@ p {
 }
 
 .ring {
-  width: 74px;
-  height: 74px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
-  border: none;
-  background: conic-gradient(from 65deg, var(--logo-copper), var(--logo-gold), var(--logo-light), var(--logo-copper));
+  border: 2px solid rgba(255, 239, 190, 0.33);
+  background:
+    radial-gradient(circle at 30% 24%, #fff7dd 0%, #f1cf84 18%, #cf922f 45%, #8b5918 72%, #57320d 100%);
   box-shadow:
-    inset 0 1px 3px rgba(255, 255, 255, 0.45),
-    inset 0 -6px 14px rgba(57, 35, 11, 0.6),
-    0 6px 18px rgba(0, 0, 0, 0.35);
+    inset 0 2px 6px rgba(255, 248, 214, 0.65),
+    inset 0 -10px 20px rgba(57, 35, 11, 0.68),
+    0 8px 20px rgba(0, 0, 0, 0.45);
   position: relative;
   cursor: pointer;
 }
@@ -319,24 +415,18 @@ p {
 .ring::before {
   content: "";
   position: absolute;
-  inset: 17px;
+  inset: 22px;
   border-radius: 50%;
-  background: radial-gradient(circle at 50% 50%, rgba(8, 17, 29, 0.98) 65%, rgba(8, 17, 29, 0.85) 100%);
-  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.55);
+  background: radial-gradient(circle at 50% 50%, rgba(8, 17, 29, 0.98) 62%, rgba(8, 17, 29, 0.82) 100%);
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.65);
 }
 
 .ring::after {
-  content: "ash nazg durbatuluk";
+  content: "";
   position: absolute;
-  inset: 0;
-  display: grid;
-  place-items: center;
-  font-family: "Party Business", serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.06em;
-  color: rgba(255, 216, 142, 0.88);
-  text-shadow: 0 0 10px rgba(255, 167, 73, 0.45);
-  mix-blend-mode: screen;
+  inset: 6px;
+  border-radius: 50%;
+  border: 1px dashed rgba(255, 217, 136, 0.4);
 }
 
 .ring:hover {
@@ -391,6 +481,14 @@ footer {
   font-family: "Party Business", serif;
   font-size: 1.3rem;
   color: var(--logo-light);
+}
+
+.quote-box {
+  margin-top: 0.75rem;
+  padding: 0.8rem 0.95rem;
+  border-left: 3px solid rgba(227, 183, 55, 0.65);
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
 }
 
 .hidden-badge {
@@ -472,6 +570,12 @@ body.eye-of-sauron .bg-glow {
   footer {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .panel-banner {
+    width: calc(100% + 2rem);
+    margin: -1rem -1rem 0.85rem;
+    height: 140px;
   }
 
   .audio-dock {

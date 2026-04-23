@@ -45,7 +45,19 @@ document.body.append(emojiField);
 
 const anthem = new Audio("Theyre_Taking_The_Hobbits_To_Isengard.mp3");
 anthem.loop = true;
-anthem.volume = 0.4;
+anthem.preload = "auto";
+
+const MUSIC_VOLUME_KEY = "lotr_music_volume";
+const MUSIC_TIME_KEY = "lotr_music_time";
+const MUSIC_PLAYING_KEY = "lotr_music_playing";
+
+const savedVolume = Number(localStorage.getItem(MUSIC_VOLUME_KEY));
+anthem.volume = Number.isFinite(savedVolume) && savedVolume >= 0 && savedVolume <= 1 ? savedVolume : 0.4;
+
+const savedTime = Number(localStorage.getItem(MUSIC_TIME_KEY));
+if (Number.isFinite(savedTime) && savedTime > 0) {
+  anthem.currentTime = savedTime;
+}
 
 const audioDock = document.createElement("aside");
 audioDock.className = "audio-dock";
@@ -56,23 +68,70 @@ const audioToggle = document.getElementById("audio-toggle");
 const audioVolume = document.getElementById("audio-volume");
 
 if (audioToggle && audioVolume) {
+  audioVolume.value = String(anthem.volume);
+
+  const syncState = () => {
+    localStorage.setItem(MUSIC_VOLUME_KEY, String(anthem.volume));
+    localStorage.setItem(MUSIC_TIME_KEY, String(anthem.currentTime));
+    localStorage.setItem(MUSIC_PLAYING_KEY, anthem.paused ? "0" : "1");
+  };
+
   audioToggle.addEventListener("click", async () => {
+    if (!anthem.paused && anthem.muted) {
+      anthem.muted = false;
+      audioToggle.textContent = "Pause";
+      syncState();
+      return;
+    }
+
     if (anthem.paused) {
       try {
         await anthem.play();
+        anthem.muted = false;
         audioToggle.textContent = "Pause";
+        syncState();
       } catch (error) {
         audioToggle.textContent = "Tap again";
       }
     } else {
       anthem.pause();
       audioToggle.textContent = "Play";
+      syncState();
     }
   });
 
   audioVolume.addEventListener("input", () => {
     anthem.volume = Number(audioVolume.value);
+    syncState();
   });
+
+  anthem.addEventListener("timeupdate", syncState);
+  window.addEventListener("beforeunload", syncState);
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "hidden") {
+      syncState();
+    }
+  });
+
+  const shouldAutoPlay = localStorage.getItem(MUSIC_PLAYING_KEY);
+  const tryAutoplay = async () => {
+    if (shouldAutoPlay !== "0") {
+      try {
+        await anthem.play();
+        audioToggle.textContent = "Pause";
+      } catch (error) {
+        anthem.muted = true;
+        try {
+          await anthem.play();
+          audioToggle.textContent = "Unmute";
+        } catch (secondError) {
+          audioToggle.textContent = "Tap to start";
+        }
+      }
+    }
+  };
+
+  tryAutoplay();
 }
 
 if (countdownNode) {
