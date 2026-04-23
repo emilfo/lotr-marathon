@@ -184,7 +184,7 @@ if (ringButton && ringMessage) {
         audioToggle.click();
       }
     } else if (ringClicks >= 10) {
-      ringMessage.textContent = "One for the Dark Lord on his dark throne. Type mellon to proceed.";
+      ringMessage.textContent = "One for the Dark Lord on his dark throne. The hidden door is near.";
     }
   });
 }
@@ -192,6 +192,21 @@ if (ringButton && ringMessage) {
 const konami = ["ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown", "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight", "b", "a"];
 let konamiIndex = 0;
 let typed = "";
+let durinGatewayShown = false;
+
+const showDurinGateway = () => {
+  if (durinGatewayShown) {
+    return;
+  }
+
+  durinGatewayShown = true;
+  const gateway = document.createElement("a");
+  gateway.href = "doors-of-durin.html";
+  gateway.className = "durin-gateway";
+  gateway.setAttribute("aria-label", "Enter the Doors of Durin");
+  gateway.innerHTML = '<img src="assets/images/doors-of-durin.png" alt="Doors of Durin">';
+  document.body.append(gateway);
+};
 
 document.addEventListener("keydown", (event) => {
   if (event.key === konami[konamiIndex]) {
@@ -213,7 +228,11 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (typed.includes("mellon")) {
-    window.location.href = "doors-of-durin.html";
+    showDurinGateway();
+    if (ringMessage) {
+      ringMessage.textContent = "The doors reveal themselves.";
+    }
+    typed = "";
   }
 });
 
