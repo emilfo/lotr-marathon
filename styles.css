@@ -156,8 +156,8 @@ main {
   border: 1px solid rgba(227, 183, 55, 0.35);
   border-radius: 18px;
   padding: clamp(1rem, 3.5vw, 2rem);
-  background: linear-gradient(160deg, rgba(37, 45, 65, 0.95), rgba(43, 47, 34, 0.87));
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  background: transparent;
+  box-shadow: none;
   transition: border-color 500ms ease, background 500ms ease, box-shadow 500ms ease;
 }
 
@@ -457,6 +457,7 @@ footer {
   align-items: center;
   position: relative;
   z-index: 5;
+  background: transparent;
 }
 
 #ring-message {
