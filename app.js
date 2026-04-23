@@ -1,6 +1,28 @@
 const marathonStart = new Date("2026-05-01T11:00:00");
 const countdownNode = document.getElementById("countdown");
 
+const floatingField = document.createElement("div");
+floatingField.className = "floating-field";
+
+for (let i = 0; i < 15; i += 1) {
+  const shard = document.createElement("span");
+  shard.className = "float-shard";
+  const size = 6 + Math.random() * 18;
+  const hue = 30 + Math.random() * 180;
+  shard.style.width = `${size}px`;
+  shard.style.height = `${size}px`;
+  shard.style.left = `${Math.random() * 100}%`;
+  shard.style.top = `${Math.random() * 100}%`;
+  shard.style.background = `hsla(${hue}, 75%, 70%, 0.45)`;
+  shard.style.setProperty("--speed", `${7 + Math.random() * 11}s`);
+  shard.style.setProperty("--rise", `${12 + Math.random() * 45}px`);
+  shard.style.setProperty("--slide", `${-20 + Math.random() * 40}px`);
+  shard.style.animationDelay = `${Math.random() * 8}s`;
+  floatingField.append(shard);
+}
+
+document.body.append(floatingField);
+
 if (countdownNode) {
   const tick = () => {
     const now = new Date();
@@ -27,6 +49,9 @@ let ringClicks = 0;
 
 if (ringButton && ringMessage) {
   ringButton.addEventListener("click", () => {
+    ringButton.classList.remove("awake");
+    void ringButton.offsetWidth;
+    ringButton.classList.add("awake");
     ringClicks += 1;
     if (ringClicks === 3) {
       ringMessage.textContent = "Three clicks for Elven-kings under the sky...";

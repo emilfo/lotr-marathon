@@ -27,11 +27,37 @@ body {
   position: fixed;
   inset: -15vh -20vw;
   pointer-events: none;
-  z-index: -1;
+  z-index: -3;
   background:
     radial-gradient(circle at 15% 20%, rgba(212, 178, 106, 0.2), transparent 40%),
     radial-gradient(circle at 90% 10%, rgba(59, 143, 122, 0.18), transparent 35%),
     radial-gradient(circle at 50% 85%, rgba(139, 31, 31, 0.18), transparent 35%);
+}
+
+.floating-field {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.float-shard {
+  position: absolute;
+  border-radius: 999px;
+  opacity: 0.45;
+  filter: blur(0.3px);
+  animation: drift var(--speed) ease-in-out infinite;
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translateY(0) translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(calc(var(--rise) * -1)) translateX(var(--slide)) rotate(10deg);
+  }
 }
 
 .site-header {
@@ -162,6 +188,43 @@ p {
   background: rgba(21, 32, 48, 0.65);
 }
 
+.poster {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0.5rem 0 0.7rem;
+  border: 1px solid rgba(212, 178, 106, 0.3);
+}
+
+.image-grid {
+  margin-top: 1rem;
+  display: grid;
+  gap: 0.8rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.image-grid a {
+  display: block;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid rgba(212, 178, 106, 0.25);
+  transform: translateY(0);
+  transition: transform 180ms ease;
+}
+
+.image-grid a:hover {
+  transform: translateY(-4px);
+}
+
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
 .card a {
   color: #9de4d2;
   text-decoration: none;
@@ -199,13 +262,69 @@ p {
 }
 
 .ring {
-  border-radius: 999px;
-  border: 1px solid var(--gold);
-  background: radial-gradient(circle, #f6e3b8 0%, #ba934b 45%, #836025 100%);
-  color: #1f1408;
-  font-family: Cinzel, serif;
-  padding: 0.5rem 0.9rem;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  border: none;
+  background:
+    radial-gradient(circle at 35% 30%, #f8ebc9 0%, #e5cb8c 20%, #c9a25f 38%, #9a7339 58%, #6f4c20 78%, #4f3414 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -6px 14px rgba(57, 35, 11, 0.6),
+    0 6px 18px rgba(0, 0, 0, 0.35);
+  position: relative;
   cursor: pointer;
+}
+
+.ring::before {
+  content: "";
+  position: absolute;
+  inset: 17px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 50%, rgba(8, 17, 29, 0.98) 65%, rgba(8, 17, 29, 0.85) 100%);
+  box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.55);
+}
+
+.ring::after {
+  content: "ash nazg";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: "IM Fell English SC", serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 216, 142, 0.88);
+  text-shadow: 0 0 10px rgba(255, 167, 73, 0.45);
+  mix-blend-mode: screen;
+}
+
+.ring.awake {
+  animation: ring-pulse 900ms ease;
+}
+
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  40% {
+    transform: scale(1.08) rotate(8deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 footer {
