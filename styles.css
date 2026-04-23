@@ -99,8 +99,8 @@ body {
 }
 
 .site-header {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
   padding: 1rem clamp(1rem, 3vw, 3rem);
@@ -117,12 +117,18 @@ body {
   font-family: "Ringbearer", serif;
   font-size: 1.3rem;
   letter-spacing: 0.05em;
+  justify-self: start;
+}
+
+.anthem-slot {
+  justify-self: center;
 }
 
 nav {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  justify-self: end;
 }
 
 nav a {
@@ -530,10 +536,7 @@ body.eye-of-sauron .float-emoji {
 }
 
 .audio-dock {
-  position: fixed;
-  right: 1rem;
-  bottom: 1rem;
-  z-index: 12;
+  position: static;
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 0.5rem;
@@ -570,10 +573,17 @@ body.eye-of-sauron .float-emoji {
 @media (max-width: 700px) {
   .site-header {
     position: static;
+    grid-template-columns: 1fr;
   }
 
   nav {
     gap: 0.7rem;
+    justify-self: start;
+  }
+
+  .anthem-slot {
+    justify-self: start;
+    width: 100%;
   }
 
   footer {
@@ -588,8 +598,6 @@ body.eye-of-sauron .float-emoji {
   }
 
   .audio-dock {
-    right: 0.6rem;
-    bottom: 0.6rem;
     padding: 0.55rem 0.7rem;
   }
 

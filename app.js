@@ -62,7 +62,10 @@ if (Number.isFinite(savedTime) && savedTime > 0) {
 const audioDock = document.createElement("aside");
 audioDock.className = "audio-dock";
 audioDock.innerHTML = "<strong>Isengard Anthem</strong><button id=\"audio-toggle\" type=\"button\">Play</button><input id=\"audio-volume\" type=\"range\" min=\"0\" max=\"1\" step=\"0.05\" value=\"0.4\" aria-label=\"Music volume\">";
-document.body.append(audioDock);
+const anthemSlot = document.getElementById("anthem-slot");
+if (anthemSlot) {
+  anthemSlot.append(audioDock);
+}
 
 const audioToggle = document.getElementById("audio-toggle");
 const audioVolume = document.getElementById("audio-volume");
@@ -203,7 +206,7 @@ document.addEventListener("keydown", (event) => {
     typed = typed.slice(-12);
   }
 
-  if (typed.includes("friend") || typed.includes("mellon")) {
+  if (typed.includes("mellon")) {
     window.location.href = "doors-of-durin.html";
   }
 });
