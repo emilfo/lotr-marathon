@@ -169,7 +169,7 @@ if (ringButton && ringMessage) {
     } else if (ringClicks === 7) {
       ringMessage.textContent = "Seven for the Dwarf-lords in their halls of stone...";
     } else if (ringClicks === 9) {
-      ringMessage.textContent = "Nine for Mortal Men doomed to die... you unlocked an easter egg.";
+      ringMessage.textContent = "Nine for Mortal Men doomed to die... Mordor mode ignites the whole realm.";
       document.body.classList.add("eye-of-sauron");
       if (anthem.paused && audioToggle) {
         audioToggle.click();

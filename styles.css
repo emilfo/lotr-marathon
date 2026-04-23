@@ -43,6 +43,7 @@ body {
   color: var(--ink);
   background: radial-gradient(circle at 20% 20%, var(--rotk-4) 0%, var(--rotk-2) 30%, var(--moss-1) 58%, var(--black) 100%);
   min-height: 100%;
+  transition: background 700ms ease, filter 700ms ease;
 }
 
 body::before {
@@ -176,6 +177,7 @@ main {
   padding: clamp(1rem, 3.5vw, 2rem);
   background: linear-gradient(160deg, rgba(37, 45, 65, 0.95), rgba(43, 47, 34, 0.87));
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.35);
+  transition: border-color 500ms ease, background 500ms ease, box-shadow 500ms ease;
 }
 
 .hero.small {
@@ -224,6 +226,7 @@ p {
   text-decoration: none;
   font-weight: 700;
   cursor: pointer;
+  transition: background 300ms ease, color 300ms ease, border-color 300ms ease;
 }
 
 .button.ghost {
@@ -511,13 +514,47 @@ footer {
 }
 
 body.eye-of-sauron {
-  filter: saturate(1.2) contrast(1.05);
+  --rotk-1: #2a0f0f;
+  --rotk-2: #3d1616;
+  --rotk-3: #6e2118;
+  --rotk-4: #9b341f;
+  --moss-1: #1a1010;
+  --moss-2: #2b1614;
+  --moss-3: #4f1f1a;
+  --moss-4: #6f251b;
+  --logo-copper: #bf4d1c;
+  --logo-gold: #ff9b2f;
+  --logo-light: #ffd07a;
+  --logo-ivory: #ffe6bf;
+  animation: mordor-pulse 2.4s ease-in-out infinite;
 }
 
 body.eye-of-sauron .bg-glow {
   background:
-    radial-gradient(circle at 50% 50%, rgba(206, 62, 35, 0.45), transparent 35%),
-    radial-gradient(circle at 50% 50%, rgba(96, 41, 50, 0.35), transparent 60%);
+    radial-gradient(circle at 50% 50%, rgba(255, 92, 31, 0.55), transparent 35%),
+    radial-gradient(circle at 18% 18%, rgba(255, 155, 47, 0.28), transparent 38%),
+    radial-gradient(circle at 78% 72%, rgba(159, 29, 18, 0.4), transparent 45%);
+}
+
+body.eye-of-sauron .floating-field,
+body.eye-of-sauron .emoji-field {
+  opacity: 1;
+  filter: saturate(1.35) brightness(1.1);
+}
+
+body.eye-of-sauron .float-shard,
+body.eye-of-sauron .float-emoji {
+  animation-duration: calc(var(--speed) * 0.75);
+}
+
+@keyframes mordor-pulse {
+  0%,
+  100% {
+    filter: saturate(1.08) contrast(1.04);
+  }
+  50% {
+    filter: saturate(1.22) contrast(1.1);
+  }
 }
 
 .audio-dock {
