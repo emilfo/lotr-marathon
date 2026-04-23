@@ -50,7 +50,7 @@ body {
   position: fixed;
   inset: -15vh -20vw;
   pointer-events: none;
-  z-index: -3;
+  z-index: 0;
   background:
     radial-gradient(circle at 15% 20%, rgba(227, 183, 55, 0.26), transparent 40%),
     radial-gradient(circle at 90% 10%, rgba(70, 102, 143, 0.28), transparent 35%),
@@ -62,7 +62,7 @@ body {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: -2;
+  z-index: 1;
 }
 
 .float-shard {
@@ -78,7 +78,7 @@ body {
   inset: 0;
   overflow: hidden;
   pointer-events: none;
-  z-index: -1;
+  z-index: 2;
 }
 
 .float-emoji {
@@ -109,6 +109,7 @@ body {
   backdrop-filter: blur(6px);
   background: rgba(33, 49, 80, 0.68);
   border-bottom: 1px solid rgba(227, 183, 55, 0.25);
+  z-index: 20;
 }
 
 .brand {
@@ -146,6 +147,8 @@ main {
   margin: 2rem auto 3rem;
   display: grid;
   gap: 1.2rem;
+  position: relative;
+  z-index: 5;
 }
 
 .hero,
@@ -452,6 +455,8 @@ footer {
   display: flex;
   gap: 0.8rem;
   align-items: center;
+  position: relative;
+  z-index: 5;
 }
 
 #ring-message {
